@@ -7,7 +7,7 @@ app.get('/', function (req, res) {
 })
 
 io.on('connection', function (socket) {
-  io.emit('chat message', 'A user connect')
+  socket.broadcast.emit('chat message', 'A user connect to the room')
   socket.on('chat message', function (msg) {
     io.emit('chat message', msg)
   })
